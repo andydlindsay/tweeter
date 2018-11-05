@@ -1,0 +1,21 @@
+.new-tweet .heading {
+    border-bottom: 1px solid black;
+}
+
+.new-tweet {
+    border: 1px solid lightgray;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    margin: 2em;
+    padding: 0 1em 1em 1em;
+}
+
+.new-tweet textarea {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.new-tweet .counter {
+    float: right;
+    padding-right: 0.5em;
+}

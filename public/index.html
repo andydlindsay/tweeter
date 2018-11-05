@@ -16,6 +16,9 @@
     <!-- Nav CSS -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
+    <!-- New Tweet CSS -->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -34,11 +37,14 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
 
-      <p>Lorem ipsum dolor sit amet, cum laoreet maiestatis honestatis id, usu in eius quas. Te dicta vocibus vix, postea phaedrum consulatu est ex. Novum quaeque elaboraret pri id. Ut purto vidisse usu, vis nemore labores invenire ei, dicant dolores cu qui. Liber dolor aliquid quo id, ex usu causae persecuti constituto, pro propriae reprehendunt ut. Ad vis saepe homero, has alia alterum molestie cu. Dicit eripuit tincidunt sea an.</p>
-
-      <p>Iudico habemus delicata ad eum. Eu mei tritani molestie patrioque. Debet mnesarchum ei eum, feugait torquatos sea ex. Eum ex alia atqui volutpat, cu dicam dignissim qui. Mel saepe mollis te, utroque nominati ea duo, ne idque harum pro. Pro nihil audire percipit in, legere percipit delicatissimi cu quo.</p>
-
-      <p>His omnium virtute repudiandae at. An nostrud dolores platonem mea, natum interesset disputando ad pri. Mutat intellegat neglegentur et qui, populo oblique civibus has et. Vix eu iriure dissentiunt.</p>
+      <section class="new-tweet">
+        <h2 class="heading">Compose Tweet</h2>
+        <form action="/tweets/" method="POST">
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <input type="submit" value="Tweet">
+          <span class="counter">140</span>
+        </form>
+      </section>
 
     </main>
 
