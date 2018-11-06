@@ -29,7 +29,7 @@ article.tweet img {
     background-color: white;
 }
 
-article.tweet p {
+article.tweet .tweet-body {
     background-color: white;
     padding: 0.5em;
 }
