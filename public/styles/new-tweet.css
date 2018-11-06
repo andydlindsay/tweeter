@@ -37,7 +37,10 @@
 .new-tweet .error-message {
     background-color: #fce4e4;
     border: 1px solid #fcc2c3;
-    padding: 20px 30px;
+    padding: 10px 30px;
+    margin-bottom: 0.25em;
+    text-align: center;
+    border-radius: 5px;
 }
 
 .new-tweet .error-text {

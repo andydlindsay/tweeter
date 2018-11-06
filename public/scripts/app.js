@@ -48,21 +48,28 @@ $(document).ready(() => {
   const $newTweetForm = $newTweetSection.find('form');
   const $newTweetFormTextArea = $newTweetForm.find('textarea');
   const $newTweetFormCounter = $newTweetForm.find('.counter');
+  const $newTweetFormErrorMessage = $newTweetForm.find('.error-message');
+  const $newTweetFormErrorMessageText = $newTweetFormErrorMessage.find('.error-text');
 
   $newTweetForm.submit((event) => {
     event.preventDefault();
-    const charsUsed = $newTweetFormTextArea.val.textLength;
+    const charsUsed = $newTweetFormTextArea.val().length;
     if (charsUsed > 140) {
-      alert('Tweet content exceeds maximum of 140 characters.');
+      $newTweetFormErrorMessage.slideDown('fast', () => {
+        $newTweetFormErrorMessageText.text('Tweet content exceeds maximum of 140 characters.');
+      });
       return;
     } else if (charsUsed === 0) {
-      alert('Tweet content is not present.');
+      $newTweetFormErrorMessage.slideDown('fast', () => {
+        $newTweetFormErrorMessageText.text('Tweet content is not present');
+      });
       return;
     }
 
     $.post('/tweets/', $newTweetForm.serialize(), (err, data) => {
-      console.log('tweet sent to server');
       loadTweets();
+      $newTweetFormErrorMessage.slideUp('fast');
+      $newTweetFormErrorMessageText.text('');
       $newTweetFormTextArea.val('');
       $newTweetFormCounter.text('140');
     });
