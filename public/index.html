@@ -10,6 +10,9 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
@@ -18,6 +21,9 @@
 
     <!-- New Tweet CSS -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+    <!-- Tweet List CSS -->
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -47,6 +53,46 @@
           <input type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
+      </section>
+
+      <section class="tweet-container">
+
+        <article class="tweet">
+          <header>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mr._Smiley_Face.svg/2000px-Mr._Smiley_Face.svg.png" alt="user profile image" />
+            <span class="username"><strong>John Fields</strong></span>
+            <span class="handle">@MrFields</span>
+          </header>
+            <p>Why can't your nose be 12 inches long? Cuz then it would be a foot!</p>
+          <footer>
+            <span>12 days ago</span>
+            <span class="button-group hidden">
+              <i class="fas fa-flag fa-lg"></i>
+              <i class="fas fa-retweet fa-lg"></i>
+              <i class="fas fa-heart fa-lg"></i>
+            </span>
+          </footer>
+        </article>
+
+        <article class="tweet">
+            <header>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Happy_smiley_face.png" alt="user profile image" />
+              <span class="username"><strong>Nico Tine</strong></span>
+              <span class="handle">@Nico123</span>
+            </header>
+              <div class="tweet-body">
+                <p>What kind of pictures do turtles take? Shellfies!</p>
+              </div>
+            <footer>
+              <span>15 days ago</span>
+              <span class="button-group hidden">
+                <i class="fas fa-flag fa-lg"></i>
+                <i class="fas fa-retweet fa-lg"></i>
+                <i class="fas fa-heart fa-lg"></i>
+              </span>
+            </footer>
+          </article>
+
       </section>
 
     </main>
