@@ -13,9 +13,15 @@
 .new-tweet textarea {
     width: 100%;
     padding: 0.5em;
+    resize: vertical;
+    min-height: 5em;
 }
 
 .new-tweet .counter {
     float: right;
     padding-right: 0.5em;
+}
+
+.new-tweet .invalid {
+    color: red;
 }
