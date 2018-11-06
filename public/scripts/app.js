@@ -4,62 +4,14 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Fake data taken from tweets.json
-const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": {
-          "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": {
-          "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
-      },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
-    }
-  ];
-
 function createTweetElement(tweetData) {
     const $tweetHeader = $('<header>', {});
     const $avatar = $('<img />', {
         src: tweetData.user.avatars.regular,
         alt: 'User profile image'
     });
-    const $username = $('<span>', { class: 'username'}).append(`<strong>${tweetData.user.name}</strong>`);
-    const $handle = $('<span>', { class: 'handle'}).text(tweetData.user.handle);
+    const $username = $('<span>', { class: 'username' }).append(`<strong>${tweetData.user.name}</strong>`);
+    const $handle = $('<span>', { class: 'handle' }).text(tweetData.user.handle);
     $tweetHeader.append($avatar).append($username).append($handle);
 
     const $tweetBody = $('<p>', { class: 'tweet-body' }).text(tweetData.content.text);
@@ -80,11 +32,37 @@ $(document).ready(() => {
 
     function renderTweets(tweets) {
         const $tweetsContainer = $('#tweets-container');
+        $tweetsContainer.empty();
         tweets.forEach((tweet) => {
             $tweetsContainer.append(createTweetElement(tweet));
         });
     }
 
-    renderTweets(data);
+    function loadTweets() {
+      $.get('/tweets/', (data) => {
+        renderTweets(data.reverse());
+      });
+    }
+
+    $('section.new-tweet form').submit((event) => {
+      event.preventDefault();
+      const charsUsed = $('section.new-tweet textarea')[0].textLength;
+      if (charsUsed > 140) {
+        alert('Tweet content exceeds maximum of 140 characters.');
+        return;
+      } else if (charsUsed === 0) {
+        alert('Tweet content is not present.');
+        return;
+      }
+
+      $.post('/tweets/', $('section.new-tweet form').serialize(), (err, data) => {
+        console.log('tweet sent to server');
+        loadTweets();
+        $('section.new-tweet textarea')[0].value = '';
+        $('section.new-tweet form .counter')[0].innerHTML = 140;
+      });
+    });
+
+    loadTweets();
 
 });
