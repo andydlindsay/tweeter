@@ -32,3 +32,8 @@ main.container {
   padding-top: 120px;
   padding-bottom: 20px;
 }
+
+// Import partials
+@import 'nav';
+@import 'new-tweet';
+@import 'tweets';

@@ -32,4 +32,149 @@ main.container {
   padding-bottom: 20px;
 }
 
+#nav-bar {
+  position: fixed;
+  height: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #00a087;
+  color: #e8fdff;
+  padding: 0 2em;
+  z-index: 1;
+}
+
+#nav-bar .header {
+  font-size: 2em;
+  float: left;
+  line-height: 2.5em;
+  margin-left: 10px;
+}
+#nav-bar .logo {
+  height: 80px;
+  width: 80px;
+  float: left;
+}
+#nav-bar .button {
+  padding: 0.75em;
+  color: #00a087;
+  border: 1px solid black;
+  font-size: 1.5em;
+  border-radius: 5px;
+  margin-top: 0.25em;
+  background-color: #e8fdff;
+}
+#nav-bar .button:hover {
+  background-color: white;
+}
+#nav-bar .right {
+  float: right;
+}
+
+.new-tweet {
+  border: 1px solid lightgray;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  margin: 0 2em 2em 2em;
+  padding: 0 1em 1em 1em;
+  position: relative;
+  z-index: 0;
+  display: none;
+}
+
+.new-tweet {
+  /* based on http://sarahholleydesign.com/pure-css-custom-error-messaging-for-default-form-elements/ */
+}
+.new-tweet .heading {
+  border-bottom: 1px solid black;
+}
+.new-tweet textarea {
+  width: 100%;
+  padding: 0.5em;
+  resize: vertical;
+  min-height: 5em;
+}
+.new-tweet .counter {
+  float: right;
+  padding-right: 0.5em;
+}
+.new-tweet .invalid {
+  color: #cc0033;
+}
+.new-tweet .hidden {
+  display: none;
+}
+.new-tweet .error-message {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  padding: 10px 30px;
+  margin-bottom: 0.25em;
+  text-align: center;
+  border-radius: 5px;
+}
+.new-tweet .error-text {
+  color: #cc0033;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  text-shadow: 1px 1px rgba(250, 250, 250, 0.3);
+}
+
+article.tweet {
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 5px;
+  margin: 2em;
+  opacity: 0.7;
+  overflow: hidden;
+}
+
+article.tweet:hover {
+  border: 1px solid black;
+  opacity: 1;
+}
+
+article.tweet:hover .hidden {
+  visibility: visible;
+}
+
+article.tweet header {
+  padding: 0.5em;
+  background-color: whitesmoke;
+  position: relative;
+}
+article.tweet img {
+  width: 3em;
+  border-radius: 5px;
+  background-color: white;
+}
+article.tweet .tweet-body {
+  background-color: white;
+  padding: 0.5em;
+}
+article.tweet footer {
+  border-top: 1px solid lightgray;
+  padding: 0.75em 0.5em;
+  font-size: 0.75em;
+}
+article.tweet .handle {
+  float: right;
+}
+article.tweet .username {
+  position: absolute;
+  top: 0.5em;
+  left: 2.75em;
+  font-size: 1.5em;
+}
+article.tweet .button-group {
+  color: mediumaquamarine;
+  float: right;
+}
+article.tweet .button-group i {
+  margin: 0 0.15em;
+}
+article.tweet .hidden {
+  visibility: hidden;
+}
+
 /*# sourceMappingURL=layout.css.map */
