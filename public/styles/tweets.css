@@ -4,6 +4,7 @@ article.tweet {
     border-radius: 5px;
     margin: 2em;
     opacity: 0.7;
+    overflow: hidden;
 }
 
 article.tweet:hover {
@@ -19,8 +20,6 @@ article.tweet header {
     padding: 0.5em;
     background-color: whitesmoke;
     position: relative;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
 }
 
 article.tweet img {

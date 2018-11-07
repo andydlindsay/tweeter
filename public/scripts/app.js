@@ -51,18 +51,20 @@ $(document).ready(() => {
   const $newTweetFormErrorMessage = $newTweetForm.find('.error-message');
   const $newTweetFormErrorMessageText = $newTweetFormErrorMessage.find('.error-text');
 
+  function showErrorMessage(message) {
+    $newTweetFormErrorMessage.slideDown('fast', () => {
+      $newTweetFormErrorMessageText.text(message);
+    });
+  }
+
   $newTweetForm.submit((event) => {
     event.preventDefault();
     const charsUsed = $newTweetFormTextArea.val().length;
     if (charsUsed > 140) {
-      $newTweetFormErrorMessage.slideDown('fast', () => {
-        $newTweetFormErrorMessageText.text('Tweet content exceeds maximum of 140 characters.');
-      });
+      showErrorMessage('Tweet content exceeds maximum of 140 characters.');
       return;
     } else if (charsUsed === 0) {
-      $newTweetFormErrorMessage.slideDown('fast', () => {
-        $newTweetFormErrorMessageText.text('Tweet content is not present');
-      });
+      showErrorMessage('There\'s nothing to tweet!');
       return;
     }
 
