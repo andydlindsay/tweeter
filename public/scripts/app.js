@@ -4,26 +4,51 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+function createIconElement(iconType) {
+  return $('<i>', {
+    class: `fas fa-${iconType} fa-lg`
+  });
+}
+
 function createTweetElement(tweetData) {
-  const $tweetHeader = $('<header>', {});
+  // header elements
+  const $tweetHeader = $('<header>');
   const $avatar = $('<img />', {
     src: tweetData.user.avatars.regular,
     alt: 'User profile image'
   });
-  const $username = $('<span>', { class: 'username' }).append(`<strong>${tweetData.user.name}</strong>`);
-  const $handle = $('<span>', { class: 'handle' }).text(tweetData.user.handle);
-  $tweetHeader.append($avatar).append($username).append($handle);
+  const $username = $('<span>', {
+    class: 'username'
+  }).append(`<strong>${tweetData.user.name}</strong>`);
+  const $handle = $('<span>', {
+    class: 'handle'
+  }).text(tweetData.user.handle);
+  // build header element
+  $tweetHeader.append($avatar, $username, $handle);
 
-  const $tweetBody = $('<p>', { class: 'tweet-body' }).text(tweetData.content.text);
+  // body element
+  const $tweetBody = $('<p>', {
+    class: 'tweet-body'
+  }).text(tweetData.content.text);
 
-  const $tweetFooter = $('<footer>', {});
-  const numDaysAgo = Math.floor((new Date() - new Date(tweetData.created_at)) / 1000 / 60 / 60 / 24);
-  const $tweetDate = $('<span>', {}).text(`${numDaysAgo} days ago`);
-  const $buttonGroup = $('<span>', { class: 'button-group hidden' }).append('<i class="fas fa-flag fa-lg"></i><i class="fas fa-retweet fa-lg"></i><i class="fas fa-heart fa-lg"></i>');
-  $tweetFooter.append($tweetDate).append($buttonGroup);
+  // footer elements
+  const $tweetFooter = $('<footer>');
+  const numDaysAgo = Math.floor((new Date() - tweetData.created_at) / 1000 / 60 / 60 / 24);
+  const $tweetDate = $('<span>').text(`${numDaysAgo} days ago`);
+  const $buttonGroup = $('<span>', {
+    class: 'button-group hidden'
+  }).append(
+    createIconElement('flag'),
+    createIconElement('retweet'),
+    createIconElement('heart')
+  );
+  // build footer element
+  $tweetFooter.append($tweetDate, $buttonGroup);
 
-  const $tweetElement = $('<article>', { class: 'tweet' });
-  $tweetElement.append($tweetHeader).append($tweetBody).append($tweetFooter);
+  const $tweetElement = $('<article>', {
+    class: 'tweet'
+  });
+  $tweetElement.append($tweetHeader, $tweetBody, $tweetFooter);
 
   return $tweetElement;
 }
