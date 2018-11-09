@@ -33,8 +33,9 @@ function createTweetElement(tweetData) {
 
   // footer elements
   const $tweetFooter = $('<footer>');
-  const numDaysAgo = Math.floor((new Date() - tweetData.created_at) / 1000 / 60 / 60 / 24);
-  const $tweetDate = $('<span>').text(`${numDaysAgo} days ago`);
+  // const numDaysAgo = Math.floor((new Date() - tweetData.created_at) / 1000 / 60 / 60 / 24);
+  const numDaysAgo = $.timeago(tweetData.created_at);
+  const $tweetDate = $('<span>').text(`${numDaysAgo}`);
   const $buttonGroup = $('<span>', {
     class: 'button-group hidden'
   }).append(
